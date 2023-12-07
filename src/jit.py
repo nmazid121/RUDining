@@ -19,4 +19,5 @@ food_items = soup.findAll('div', class_='col-1')
 for item in food_items:
     print(item.get_text().strip())
 
-    
+# andre thomas test 
+print("andre")
