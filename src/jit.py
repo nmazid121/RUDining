@@ -4,11 +4,8 @@ from bs4 import BeautifulSoup
 
 
 currentDate =datetime.datetime.now()
-
 day = currentDate.strftime("%d")
-
 month = currentDate.strftime("%m")
-
 year = currentDate.strftime("%Y")
 
 currentDay = day
@@ -18,11 +15,48 @@ if (day[0] == '0') :
 currentMonth = month
 if (month[0] == '0') :
 	currentMonth = month.replace('0', '')
+	
+print("Enter campus: ")
+campusInput = input()
+print("Enter meal time: ")
+mealInput = input()
+print("Campus name: " + campusInput)
+print("Meal time: " + mealInput)
+campusName = campusInput
+mealName = mealInput
+
+locationName = ''
+if (campusName == 'Livingston') :
+    locationName = "Livingston+Dining+Commons"
+    locationNum = '03'
+if (campusName == 'Busch') :
+    locationName = "Busch+Dining+Hall" 
+if (campusName == 'Cook Doug') :
+      locationName = "Neilson+Dining+Hall"
+      locationNum = '05'
+if (campusName == 'College Ave') :
+      locationName = "The+Atrium"
+      locationNum = '13'
+      if (mealName == 'Lunch') :
+            mealName = "Lunch+Entree"
+      if (mealName == 'Breakfast') :
+            mealName = "Breakfast+Entree"
+      if (mealName == 'Dinner') :
+            mealName = "Dinner+Entree"
+
+print(locationName)
+print("The meal time is " + mealName)
 # URL of the website to scrape
 
-liviLink = "http://menuportal.dining.rutgers.edu/FoodPro/pickmenu.asp?sName=Rutgers+University+Dining&dtdate=" + currentMonth + "/" + currentDay + "/" + year + "/" + "&locationNum=03&locationName=Livingston+Dining+Commons&mealName=Dinner&naFlag="
+diningHallLink = "https://menuportal23.dining.rutgers.edu/FoodPro/pickmenu.asp?sName=Rutgers+University+Dining&dtdate=" + currentMonth + "/" + currentDay + "/" + year + "/" + "&locationNum=" + locationNum + "&locationName=" + locationName + "&mealName=" + mealName + "&naFlag="
+atriumLink = "https://menuportal23.dining.rutgers.edu/FoodPro/pickmenu.asp?locationNum=" + locationNum + "&locationName=" + locationName + "&dtdate=" + currentMonth + "/" + currentDay + "/" + year + "/" + "&mealName=" + mealName +"&sName=Rutgers+University+Dining"
 # GET request to the URL
-response = requests.get(liviLink)
+if (campusName == 'Livingston' or campusName == 'Busch' or campusName == 'Cook Doug') :
+      response = requests.get(diningHallLink)
+
+if (campusName == 'College Ave'):
+      response = requests.get(atriumLink)
+
 
 # Parse the HTML content
 soup = BeautifulSoup(response.text, 'html.parser')
@@ -37,5 +71,6 @@ for item in food_items:
     print(item.get_text().strip())
 
 # andre thomas test 
-print(currentMonth)
-print(currentDay)
+print("The current month is " + currentMonth)
+print("The current day is " + currentDay)
+print("The current link is " + diningHallLink)
