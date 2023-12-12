@@ -30,6 +30,7 @@ if (campusName == 'Livingston') :
     locationName = "Livingston+Dining+Commons"
     locationNum = '03'
 if (campusName == 'Busch') :
+    locationNum = '04'
     locationName = "Busch+Dining+Hall" 
 if (campusName == 'Cook Doug') :
       locationName = "Neilson+Dining+Hall"
