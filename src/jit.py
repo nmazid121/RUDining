@@ -16,6 +16,9 @@ currentMonth = month
 if (month[0] == '0') :
 	currentMonth = month.replace('0', '')
 	
+testDate = currentMonth + "/" + currentDay + "/" + year
+
+print(testDate)
 print("Enter campus: ")
 campusInput = input()
 print("Enter meal time: ")
@@ -49,7 +52,7 @@ print(locationName)
 print("The meal time is " + mealName)
 # URL of the website to scrape
 
-diningHallLink = "https://menuportal23.dining.rutgers.edu/FoodPro/pickmenu.asp?sName=Rutgers+University+Dining&dtdate=" + currentMonth + "/" + currentDay + "/" + year + "/" + "&locationNum=" + locationNum + "&locationName=" + locationName + "&mealName=" + mealName + "&naFlag="
+diningHallLink = "https://menuportal23.dining.rutgers.edu/FoodPro/pickmenu.asp?sName=Rutgers+University+Dining&dtdate=" + testDate + "/&locationNum=" + locationNum + "&locationName=" + locationName + "&mealName=" + mealName + "&naFlag="
 atriumLink = "https://menuportal23.dining.rutgers.edu/FoodPro/pickmenu.asp?locationNum=" + locationNum + "&locationName=" + locationName + "&dtdate=" + currentMonth + "/" + currentDay + "/" + year + "/" + "&mealName=" + mealName +"&sName=Rutgers+University+Dining"
 # GET request to the URL
 if (campusName == 'Livingston' or campusName == 'Busch' or campusName == 'Cook Doug') :
