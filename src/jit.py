@@ -69,10 +69,10 @@ soup = BeautifulSoup(response.text, 'html.parser')
 # Inspect the specific elements of the data that you want, so this one can be for the food names (This varies  depending on the website's structure)
 food_items = soup.findAll('div', class_='col-1')
 
-
+f = file_object = open("test.txt", "w", newline="")
 # Print each food item
 for item in food_items:
-    print(item.get_text().strip())
+    f.write(item.get_text().strip())
 
 # andre thomas test 
 print("The current month is " + currentMonth)
