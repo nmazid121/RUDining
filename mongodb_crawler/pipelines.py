@@ -7,7 +7,7 @@
 # useful for handling different item types with a single interface
 import pymongo
 import sys
-from .items import QuoteItem
+from .items import FoodItem
 
 class MongoDBPipeline:
 
@@ -35,6 +35,6 @@ class MongoDBPipeline:
         self.client.close()
 
     def process_item(self, item, spider):
-        data = dict(QuoteItem(item))
+        data = dict(FoodItem(item))
         self.db[self.collection].insert_one(data)
         return item
