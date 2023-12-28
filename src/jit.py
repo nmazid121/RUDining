@@ -77,5 +77,3 @@ for item in food_items:
 # andre thomas test 
 print("The current month is " + currentMonth)
 print("The current day is " + currentDay)   
-
-print("I love danny")
