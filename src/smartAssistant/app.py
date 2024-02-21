@@ -85,7 +85,7 @@ SPOTIFY_CLIENT_SECRET = "1c23ef206ef74c94a4f423e639845be7"  # Your client secret
 # Spotify callback route
 async def spotify_callback(req: Request) -> Response:
     code = req.query.get('code')
-    spotify = OAuth2Session(CONFIG.SPOTIFY_CLIENT_ID, redirect_uri=CONFIG.SPOTIFY_REDIRECT_URI)
+    spotify = OAuth2Session(CONFIG.SPOTIFY_CLIENT_ID, redirect_uri='http://localhost:3978/callback')
     try:
         # Fetch the access token using the authorization code
         token = spotify.fetch_token(
